@@ -1,0 +1,92 @@
+﻿<Page x:Class="DetskiMagaz.Pages.PageProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DetskiMagaz.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="800"
+      Title="PageProduct">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <DockPanel DockPanel.Dock="Right" Background="Azure">
+                    <TextBlock Text="Найти" HorizontalAlignment="Right" Margin="40,5,0,5"  Width="50" FontSize="17"/>
+                    <TextBox Name="TxtSearch"  Width="600" Height="30" Margin="5"/>
+                </DockPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <RadioButton Name ="RbUp" Content="По возрастанию" Margin="5,5,10,5" Checked="RbUp_Checked" />
+                    <RadioButton Name ="RbDown" Content="По убыванию" Margin="5,5,10,5" Checked="RbDown_Checked" />
+                </StackPanel>
+
+
+
+                <ListBox Name="ListProduct" Background="Transparent" Width="750" Height="250" BorderBrush="Transparent">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <ListBoxItem BorderBrush="Black" Style="{StaticResource LblRed}"  Background="Azure"  Width="700" Height="220">
+                                <ListBoxItem.Resources>
+                                    <Style TargetType="ListBoxItem" x:Key="LblRed">
+                                    </Style>
+                                </ListBoxItem.Resources>
+
+                                <StackPanel Orientation="Horizontal">
+
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Name="StringImage" Visibility="Hidden" Text="{Binding photo, StringFormat=..//{0} }" />
+                                        <Image  Source="{Binding Text, ElementName=StringImage}" Style="{StaticResource imgSource}"/>
+                                    </StackPanel>
+
+
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Наименование: " FontWeight="Bold" Style="{StaticResource prdctTB}"/>
+                                            <TextBlock Text="{Binding name}" Name="TxtNameProduct" Style="{StaticResource prdctTB}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Описание" FontWeight="Bold" Style="{StaticResource prdctTB}"/>
+                                            <TextBlock Text="{Binding description}" Name="TxtDescrProduct" Style="{StaticResource prdctTB}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Производитель: " FontWeight="Bold" Style="{StaticResource prdctTB}"/>
+                                            <TextBlock Text="{Binding Path=Manufacturer.Manufacturer1}" Name="TxtManufProduct" Style="{StaticResource prdctTB}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Стоимость: " FontWeight="Bold" Style="{StaticResource prdctTB}"/>
+                                            <TextBlock Text="{Binding stoimost}" Name="TxtStoimProduct" Style="{StaticResource prdctTB}"/>
+                                            <TextBlock Text="рублей" Style="{StaticResource prdctTB}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Скидка: " FontWeight="Bold" Style="{StaticResource prdctTB}"/>
+                                            <TextBlock Text="{Binding discount}" Name="TxtSkidkaProduct" Style="{StaticResource prdctTB}"/>
+                                            <TextBlock Text="%" Style="{StaticResource prdctTB}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Name="BtnEdit" Content="Редактировать" Style="{StaticResource mainBtn}" Margin="10,10,10,10" Click="BtnEdit_Click"/>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </StackPanel>
+                            </ListBoxItem>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel VerticalAlignment="Bottom" Height="100">
+            <DataGrid Name="gridList"                       Height="100" MaxWidth="750" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Артикул" Binding ="{Binding article_number}" Width="*" />
+                    <DataGridTextColumn Header="Наименование" Binding ="{Binding name}" Width="*" />
+                    <DataGridTextColumn Header="Стоимость" Binding ="{Binding stoimost}"  Width="*" />
+                    <DataGridTextColumn Header="Скидка" Binding ="{Binding discount}" Width="*"  />
+                    <DataGridTextColumn Header="Количество на складе" Binding ="{Binding quantity_in_stock}" Width="*" />
+                    <DataGridTextColumn Header="Поставщик" Binding ="{Binding Provider.provider1}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+    </Grid>
+</Page>

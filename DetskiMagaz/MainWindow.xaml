@@ -1,0 +1,33 @@
+﻿<Window x:Class="DetskiMagaz.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Icon="./Resources/icon.ico"
+        xmlns:local="clr-namespace:DetskiMagaz"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Source=".//Resources/logo.png" HorizontalAlignment="Left" Margin="45,0,0,0" ></Image>
+        <StackPanel Grid.Row="0" Background="#A5E887" Orientation="Horizontal" Margin="0,0,-0.4,0" >
+            <Image Source=".//Resources/logo.png" HorizontalAlignment="Left" Margin="45,0,0,0" ></Image>
+            <TextBlock Text="ООО 'ДЕТСКИЙ МИР'" FontSize="25" FontFamily="Candara" Margin="120,0,0,0" VerticalAlignment="Center" >
+            </TextBlock>
+            <Button x:Name="BtnBack" Style="{StaticResource mainBtn}" Content="Назад"  FontSize="17" Background="#B3F4E9" FontFamily="Tahoma" Width="130" Height="30" Margin="140,0,0,0" Click="BtnBack_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Background="#A5E887" Orientation="Horizontal" Margin="0,0,-0.4,0" >
+            <Button x:Name="BtnExit" Style="{StaticResource mainBtn}" Content="Выход" Background="#B3F4E9" FontFamily="Tahoma"  Width="130" Height="30" Margin="600,0,0,0" Click="BtnExit_Click" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Margin="0,0,-0.4,0"  Grid.Row="1">
+            <Image Source=".//Resources/logo.png"  Opacity="0.2" Width="300" />
+        </StackPanel>
+        <Frame x:Name="FrmMain" Grid.Row="1" NavigationUIVisibility="Hidden" ></Frame>
+
+
+    </Grid>
+</Window>
